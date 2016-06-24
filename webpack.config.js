@@ -14,12 +14,20 @@ module.exports = {
                 loaders: ['style', 'css', 'less']
             },
             {
+                test: /\.less/,
+                loaders: ['style', 'css', 'less']
+            },
+            {
                 test: /\.html$/,
                 loaders: ['file?name=[name].[ext]']
             },
             {
-                test: /\.(woff2?|svg|jpe?g|png|gif|ico)$/,
-                loader: 'url?limit=10000'
+                test: /\.(woff2?|svg)$/,
+                loader: 'file'
+            },
+            {
+                test: /\.(jpe?g|png|gif|ico)$/,
+                loaders: ['file?name=images/[name].[ext]']
             },
             {
                 test: /\.(ttf|eot)$/,
