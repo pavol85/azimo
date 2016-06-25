@@ -1,23 +1,40 @@
-import 'materialize-css/bin/materialize.css'
-import './styles/style.less'
-import 'babel-polyfill'
-import $ from "jquery"
-import _ from "underscore"
-import Backbone from "backbone"
-import 'materialize-css/bin/materialize.js'
-import mockData from './js/mockdata'
-import LoginView from './js/Views/view.login'
-import Login from './js/login'
+import "materialize-css/bin/materialize.css";
+import "./styles/style.less";
+import "babel-polyfill";
+import "materialize-css/bin/materialize.js";
+import Login from "./js/login";
+import dom from "./js/dom";
+import NavigationView from "./js/Views/view.navigation";
+import NavigationCollections from "./js/Collections/collections.navigation";
 
-const loginContent = $('#az-login');
-const loginVal = loginContent.find('input#login').val();
-const passVal = loginContent.find('input#password').val();
-const loginActionBtn = loginContent.find('#az-login-action');
+class Application {
 
-var login = Login(loginVal, passVal);
+    constructor() {
+        this.loginForm();
+        this.createNavigationMenu();
+        dom.dropdown.dropdown();
+    }
 
-loginActionBtn.on('click' , () => {
-    login.login();
+    loginForm() {
+        var login = new Login(dom.loginVal, dom.passVal);
+        dom.loginContent.on('click', '.az-login-action', () => {
+            if (login.getLogin()) dom.hidden.fadeOut('slow');
+        });
+    }
+
+    createNavigationMenu() {
+        let navigationView = new NavigationView({
+            collection: new NavigationCollections([
+                {
+                    name: 'Languages',
+                    iconClass: 'arrow_drop_down'
+                }
+            ])
+        });
+
+    }
+}
+
+$(() => {
+    new Application();
 });
-
-

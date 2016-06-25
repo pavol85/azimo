@@ -1,7 +1,7 @@
 import $ from "jquery"
 import _ from "underscore"
 import Backbone from "backbone"
-import template from "../../template/loginPage.html"
+import template from "../../template/loginPage.template.html"
 
 class LoginView extends Backbone.View {
 

@@ -2,12 +2,12 @@ export default class Login {
 
     constructor(login, pass) {
         this.login = login;
-        this.password = pass;
+        this.pass = pass;
     }
 
-    login() {
-        console.log('login: ' + this.login, 'pass: ' + this.password);
-        
+    getLogin() {
+        console.log('login: ' + this.login, 'pass: ' + this.pass);
+
         return true;
     }
 }

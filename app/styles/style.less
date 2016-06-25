@@ -2,8 +2,12 @@
 @darenColor: #243338;
 @lightenColor: #628a8c;
 
+html {
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
+
 #az-login-background {
-  background: radial-gradient(circle, @lightenColor, @darenColor);
+  .az-gradient-background;
   position: fixed;
   top: 0;
   right: 0;
@@ -17,4 +21,54 @@
   height: 100%;
   position: relative;
   z-index: 120;
+}
+
+.parallax-container {
+  height: 200px;
+}
+
+.az-gradient-background {
+  background: radial-gradient(circle, @lightenColor, @darenColor);
+}
+
+body {
+  background: url('../img/up.jpg') no-repeat top center;
+  background-size: 100% 30%;
+  min-height: 1200px;
+}
+
+.az-logo-box {
+  position: relative;
+  margin-top: -5%;
+  width: 50%;
+  padding: 20%;
+  border-radius: 50%;
+  &:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+#az-header{
+  margin-top: 20%;
+  background: white;
+  min-height: 1000px;
+  height: auto;
+  border-radius: 1%;
 }
