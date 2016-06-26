@@ -7,30 +7,22 @@ module.exports = {
             {
                 test: /\.js?$/,
                 loader: 'babel-loader?presets[]=es2015',
-                include: [path.resolve(__dirname, 'app')]
+                include: [ path.resolve(__dirname, 'app')]
             },
             {
-                test: /\.css/,
-                loaders: ['style', 'css', 'less']
-            },
-            {
-                test: /\.less/,
+                test: /\.(css|less)/,
                 loaders: ['style', 'css', 'less']
             },
             {
                 test: /\.html$/,
-                loaders: ['file?name=[name].[ext]']
+                loaders: ['html']
             },
             {
-                test: /\.(woff2?|svg)$/,
-                loader: 'file'
+                test: /index\.html$/,
+                loaders: ['file?name=[name].[ext]', 'html-minify']
             },
             {
-                test: /\.(jpe?g|png|gif|ico)$/,
-                loaders: ['file?name=images/[name].[ext]']
-            },
-            {
-                test: /\.(ttf|eot)$/,
+                test: /\.(woff2?|svg|jpe?g|png|gif|ico|ttf|eot)$/,
                 loader: 'file'
             }
         ]
@@ -40,8 +32,7 @@ module.exports = {
         filename: 'app.js'
     },
     entry: {
-        index: './app/index.html',
-        javascript: './app/app.js'
+        javascript: ['./app/app.js', './app/index.html'],
     },
     watch: false,
     colors: true,

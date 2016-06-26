@@ -1,7 +1,6 @@
 import $ from "jquery";
 import Backbone from "backbone";
 import NavigationItemsView from "./view.navigationItems";
-import dom from "../dom";
 
 class NavigationView extends Backbone.View {
 
