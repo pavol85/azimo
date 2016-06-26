@@ -137,7 +137,7 @@ class Application {
                         }
                     },
                     {
-                        "id": 1296269,
+                        "id": 1296279,
                         "owner": {
                             "login": "octocat",
                             "id": 1,
@@ -208,7 +208,7 @@ class Application {
                         "homepage": "https://github.com",
                         "language": null,
                         "forks_count": 9,
-                        "stargazers_count": 80,
+                        "stargazers_count": 60,
                         "watchers_count": 80,
                         "size": 108,
                         "default_branch": "master",

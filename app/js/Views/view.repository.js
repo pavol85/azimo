@@ -1,6 +1,7 @@
 import _ from "underscore";
 import Backbone from "backbone";
 import html from "./../../templates/repository.template.html";
+import Confirm from "./../tools/confirm";
 
 class RepositoryView extends Backbone.View {
 
@@ -14,6 +15,28 @@ class RepositoryView extends Backbone.View {
 
     get template() {
         return _.template($(html).html());
+    }
+
+    get events() {
+        return {
+            "click .material-icons": "selectIcon",
+            "mouseover .material-icons": "changeColor"
+        };
+    }
+
+    selectIcon() {
+        const message = 'Are you sure assessment?';
+        var confirm = new Confirm();
+        confirm.showConfirmationWindow(message).then((confirmed) => {
+            console.log(arguments);
+            if (confirmed) {
+                console.info('Change assessment')
+            }
+        });
+    }
+
+    changeColor(e) {
+
     }
 
     render() {

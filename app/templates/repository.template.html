@@ -1,8 +1,17 @@
 <script type="text/template">
     <img src="<%= owner.avatar_url %>" alt="" class="circle">
-    <span class="title"><%= name %></span>
+    <span class="title">
+        <a href="<%= html_url %>" target="_blank">
+            <%= name %>
+        </a>
+        </span>
     <p><%= description %> <br>
-        Second Line
+        <strong>Author:</strong> <%= owner.login %>
     </p>
-    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    <a href="#!" class="secondary-content">
+        <% let count = (stargazers_count / 20) %>
+        <% for (let i = 0; i < count; i++) { %>
+        <i class="material-icons" data="<% print (i) %>">grade</i>
+        <% } %>
+    </a>
 </script>
