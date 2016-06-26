@@ -1,15 +1,15 @@
 import $ from "jquery";
 import Backbone from "backbone";
-import NavigationItemsView from "./view.navigationItems";
+import RepositoryView from "./view.repository";
 
-class   NavigationView extends Backbone.View {
+class RepositoriesView extends Backbone.View {
 
     get tagName() {
         return 'ul';
     }
 
     get className() {
-        return 'right hide-on-med-and-down'
+        return 'collection'
     }
 
     initialize() {
@@ -18,14 +18,14 @@ class   NavigationView extends Backbone.View {
 
     render() {
         this.collection.each(this.addOne, this);
-
-        $("#az-nav-ul").append(this.el);
+        
+        $("#az-repositories").append(this.el);
     }
 
     addOne(model) {
-        var view = new NavigationItemsView({model: model});
+        var view = new RepositoryView({model: model});
         this.$el.append(view.render().el);
     }
 }
 
-export default NavigationView;
+export default RepositoriesView;
