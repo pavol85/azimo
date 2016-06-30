@@ -2,20 +2,14 @@ import $ from "jquery";
 import _ from "underscore";
 import Backbone from "backbone";
 import template from "./../../templates/login.template.html";
+import LoginModel from "./../Models/model.login";
 
 class LoginView extends Backbone.View {
 
     constructor() {
         super();
+        this.model = new LoginModel;
         this.render();
-    }
-
-    get username() {
-        return $('input#login').val();
-    }
-
-    get pass() {
-        return $('input#password').val();
     }
 
     get className() {
@@ -54,7 +48,8 @@ class LoginView extends Backbone.View {
     }
 
     validateParams() {
-        if (this.username.length > 2 && this.pass.length > 2) return true;
+        console.log(this.model.get('username'));
+        if (this.model.username.length > 2 && this.model.pass.length > 2) return true;
 
         this.getNotification('Incorrect username or password')
     }
@@ -66,7 +61,7 @@ class LoginView extends Backbone.View {
             dataType: 'json',
             async: false,
             headers: {
-                "Authorization": "Basic " + btoa(this.username + ":" + this.pass)
+                "Authorization": "Basic " + btoa(this.model.username + ":" + this.model.pass)
             },
             success: function (response) {
                 console.log(response);
@@ -79,7 +74,7 @@ class LoginView extends Backbone.View {
     }
 
     render() {
-        this.$el.html(this.template);
+        this.$el.html(this.template(this.model.toJSON()));
         $("#az-login").append(this.$el);
     }
 }
