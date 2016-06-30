@@ -3,14 +3,12 @@ import "./styles/style.less";
 import "babel-polyfill";
 import $ from "jquery";
 import "materialize-css/bin/materialize.js";
-import Login from "./js/login";
 import NavigationView from "./js/Views/view.navigation";
 import NavigationCollections from "./js/Collections/collections.navigation";
 import RepositoriesView from "./js/Views/view.repositories";
 import RepositoriesCollections from "./js/Collections/collections.repositories";
 import appTemplate from "./templates/app.template.html";
-import loginTemplate from "./templates/login.template.html";
-// import dom from "./js/dom";
+import LoginView from "./js/Views/view.login";
 
 class Application {
 
@@ -22,12 +20,7 @@ class Application {
     }
 
     loginForm() {
-        var login = new Login($('#az-login').find('input#login').val(), $('#az-login').find('input#password').val());
-        $("#az-login").append(loginTemplate);
-
-        $('#az-login').on('click', '.az-login-action', () => {
-            if (login.getLogin()) $('.az-must-hidden').fadeOut('slow');
-        });
+        var view = new LoginView();
     }
 
     createNavigationMenu() {
@@ -39,7 +32,6 @@ class Application {
                 }
             ])
         });
-
     }
 
     createRepositories() {
