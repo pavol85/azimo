@@ -9,12 +9,19 @@ import RepositoriesView from "./js/Views/view.repositories";
 import RepositoriesCollections from "./js/Collections/collections.repositories";
 import appTemplate from "./templates/app.template.html";
 import LoginView from "./js/Views/view.login";
+import Session from "./js/tools/Session";
 
 class Application {
 
     constructor() {
         $("body").prepend(appTemplate);
-        this.loginForm();
+        var session = new Session();
+        if (session.sessionIsset()) {
+            $('.az-must-hidden').hide();
+        } else {
+            this.loginForm();
+        }
+
         this.createNavigationMenu();
         this.createRepositories();
     }

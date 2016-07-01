@@ -3,6 +3,7 @@ import _ from "underscore";
 import Backbone from "backbone";
 import template from "./../../templates/login.template.html";
 import LoginModel from "./../Models/model.login";
+import Session from "./../tools/Session";
 
 class LoginView extends Backbone.View {
 
@@ -48,8 +49,11 @@ class LoginView extends Backbone.View {
     }
 
     validateParams() {
-        console.log(this.model.get('username'));
-        if (this.model.username.length > 2 && this.model.pass.length > 2) return true;
+        this.model.set({
+            username: $('#login').val(),
+            pass: $('#password').val()
+        });
+        if (this.model.get('username').length > 2 && this.model.get('pass').length > 2) return true;
 
         this.getNotification('Incorrect username or password')
     }
@@ -61,10 +65,18 @@ class LoginView extends Backbone.View {
             dataType: 'json',
             async: false,
             headers: {
-                "Authorization": "Basic " + btoa(this.model.username + ":" + this.model.pass)
+                "Authorization": "Basic " + btoa(this.model.get('username') + ":" + this.model.get('pass'))
             },
             success: function (response) {
-                console.log(response);
+                var session = new Session();
+
+                if ($('#az-remember-session').is(':checked')) {
+                    session.setLocalStorage(response);
+                } else {
+                    session.setSessionStorage(response);
+                }
+
+                $('.az-must-hidden').fadeOut();
             }
         });
     }
@@ -76,6 +88,7 @@ class LoginView extends Backbone.View {
     render() {
         this.$el.html(this.template(this.model.toJSON()));
         $("#az-login").append(this.$el);
+        $('#az-remember-session').attr('checked', this.model.get('remember'));
     }
 }
 

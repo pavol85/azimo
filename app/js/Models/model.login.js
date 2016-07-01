@@ -5,7 +5,8 @@ class LoginModel extends Backbone.Model {
     defaults() {
         return {
             username: '',
-            pass: ''
+            pass: '',
+            remember: true
         }
     }
 }
