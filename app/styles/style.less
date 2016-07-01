@@ -1,6 +1,7 @@
 //custom style
 @darenColor: #243338;
 @lightenColor: #628a8c;
+@footerBgColor: #e0e5e7;
 
 html {
   font-family: GillSans, Calibri, Trebuchet, sans-serif;
@@ -23,17 +24,42 @@ html {
   z-index: 120;
 }
 
-.parallax-container {
-  height: 200px;
+div[role="banner"] {
+  min-height: 350px;
+  color: white;
+  .az-logo-header {
+    background: url('../img/logo-white.png') no-repeat center center;
+    background-size: auto 100%;
+    width: 100%;
+    min-height: 100px;
+  }
+  p {
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: lighter;
+    margin-top: 50px;
+  }
+}
+#body {
+
+}
+footer[role="contentinfo"] {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  .az-footer-info {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 40%;
+    color: darken(@footerBgColor, 30%);
+    text-align: right;
+  }
 }
 
 .az-gradient-background {
   background: radial-gradient(circle, @lightenColor, @darenColor);
-}
-
-body {
-  background: url('../img/up.jpg') no-repeat top center;
-  background-size: 100%;
 }
 
 .az-logo-box {
@@ -64,7 +90,7 @@ body {
   }
 }
 
-#az-header{
+#az-header {
   margin-top: 20%;
   background: white;
   min-height: 1000px;

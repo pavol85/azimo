@@ -32,6 +32,11 @@ class Session {
         return (this.localStorageIfIsset() || this.sessionStorageIfIsset());
     }
 
+    removeSession() {
+        localStorage.removeItem('user');
+        sessionStorage.removeItem('user');
+    }
+
     getUser() {
         if (this.localStorageIfIsset()) {
             return this.getLocalStorage();

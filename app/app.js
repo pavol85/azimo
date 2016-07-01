@@ -3,18 +3,14 @@ import "./styles/style.less";
 import "babel-polyfill";
 import $ from "jquery";
 import "materialize-css/bin/materialize.js";
-import NavigationView from "./js/Views/view.navigation";
-import NavigationCollections from "./js/Collections/collections.navigation";
 import RepositoriesView from "./js/Views/view.repositories";
 import RepositoriesCollections from "./js/Collections/collections.repositories";
-import appTemplate from "./templates/app.template.html";
 import LoginView from "./js/Views/view.login";
 import Session from "./js/tools/Session";
 
 class Application {
 
     constructor() {
-        $("body").prepend(appTemplate);
         var session = new Session();
         if (session.sessionIsset()) {
             $('.az-must-hidden').hide();
@@ -22,23 +18,11 @@ class Application {
             this.loginForm();
         }
 
-        this.createNavigationMenu();
         this.createRepositories();
     }
 
     loginForm() {
         var view = new LoginView();
-    }
-
-    createNavigationMenu() {
-        let navigationView = new NavigationView({
-            collection: new NavigationCollections([
-                {
-                    name: 'Languages',
-                    iconClass: 'arrow_drop_down'
-                }
-            ])
-        });
     }
 
     createRepositories() {
