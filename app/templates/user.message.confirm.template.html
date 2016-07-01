@@ -1,0 +1,13 @@
+<script type="text/template">
+<div class="az-user-modal-message">
+    <i class="tiny material-icons">language</i> <a href="<%= html_url %>"><%= html_url %></a>
+    <% if (blog) { %>
+    <hr class="az-clear">
+    <i class="tiny material-icons">subtitles</i> <%= blog %>
+    <% } %>
+    <% if (email) { %>
+    <hr class="az-clear">
+    <i class="tiny material-icons">email</i> <%= email %>
+    <% } %>
+</div>
+</script>

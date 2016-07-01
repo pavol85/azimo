@@ -5,7 +5,10 @@ class UserModel extends Backbone.Model {
         return {
             avatar_url: '',
             login: '',
-            url: ''
+            url: '',
+            html_url: '',
+            blog: '',
+            email: ''
         }
     }
 }

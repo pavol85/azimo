@@ -23,6 +23,7 @@ class Application {
         }
 
         this.createRepositories();
+        console.log(session.getUser());
     }
 
     loginForm() {
