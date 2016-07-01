@@ -16,6 +16,10 @@ html {
   left: 0;
   z-index: 100;
 }
+.az-confirm {
+  float: right;
+  width: 300px !important;
+}
 
 .az-login {
   width: 100%;
@@ -27,6 +31,16 @@ html {
 div[role="banner"] {
   min-height: 350px;
   color: white;
+  padding-top: 10px;
+  img{
+    &:first-child {
+      float: left;
+      margin-right: 10px;
+    }
+  }
+  #az-user-info {
+    cursor: pointer;
+  }
   .az-logo-header {
     background: url('../img/logo-white.png') no-repeat center center;
     background-size: auto 100%;
@@ -41,13 +55,15 @@ div[role="banner"] {
     margin-top: 50px;
   }
 }
+
 #body {
 
 }
+
 footer[role="contentinfo"] {
-  position:absolute;
-  bottom:0;
-  width:100%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   .az-footer-info {
     position: absolute;
     bottom: 20px;

@@ -4,6 +4,8 @@ import Backbone from "backbone";
 import template from "./../../templates/login.template.html";
 import LoginModel from "./../Models/model.login";
 import Session from "./../tools/Session";
+import UserModel from "./../Models/model.user";
+import UserView from "./../Views/view.user";
 
 class LoginView extends Backbone.View {
 
@@ -77,6 +79,8 @@ class LoginView extends Backbone.View {
                 }
 
                 $('.az-must-hidden').fadeOut();
+                var userModel = new UserModel(response);
+                var userView = new UserView(userModel);
             }
         });
     }

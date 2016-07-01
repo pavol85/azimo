@@ -6,6 +6,8 @@ import "materialize-css/bin/materialize.js";
 import RepositoriesView from "./js/Views/view.repositories";
 import RepositoriesCollections from "./js/Collections/collections.repositories";
 import LoginView from "./js/Views/view.login";
+import UserModel from "./js/Models/model.user";
+import UserView from "./js/Views/view.user";
 import Session from "./js/tools/Session";
 
 class Application {
@@ -14,6 +16,8 @@ class Application {
         var session = new Session();
         if (session.sessionIsset()) {
             $('.az-must-hidden').hide();
+            var userModel = new UserModel(session.getUser());
+            var userView = new UserView(userModel);
         } else {
             this.loginForm();
         }
