@@ -1,17 +1,37 @@
 <script type="text/template">
-    <img src="<%= owner.avatar_url %>" alt="" class="circle">
+    <div class="row">
+        <div class="col s8 m8 l8">
+            <img src="<%= owner.avatar_url %>" alt="" class="circle">
     <span class="title">
         <a href="<%= html_url %>" target="_blank">
             <%= name %>
         </a>
+        <% if (private) {%>
+        <i class="tiny material-icons">lock</i>
+        <% }%>
         </span>
-    <p><%= description %> <br>
-        <strong>Author:</strong> <%= owner.login %>
-    </p>
-    <a href="#!" class="secondary-content">
-        <% let count = (stargazers_count / 20) %>
-        <% for (let i = 0; i < count; i++) { %>
-        <i class="material-icons" data="<% print (i) %>">grade</i>
-        <% } %>
-    </a>
+            <p><i><%= description %> </i>
+            <div class="valign-wrapper">
+                <i class="tiny material-icons az-icon">today</i><strong><%= created_at %></strong>
+            </div>
+            <div class="valign-wrapper">
+                <i class="tiny material-icons az-icon">language</i><strong><%= language %></strong>
+            </div>
+            <div class="valign-wrapper">
+                <i class="tiny material-icons az-icon">visibility</i><strong><%= watchers_count %></strong>
+            </div>
+            <div class="valign-wrapper">
+                <i class="tiny material-icons az-icon">assignment_ind</i> <%= owner.login %>
+            </div>
+            </p>
+        </div>
+        <div class="col s4 m4 l4">
+            <a href="#!" class="secondary-content">
+                <% let count = (score / 20) %>
+                <% for (let i = 0; i < count.toFixed(); i++) { %>
+                <i class="material-icons" data="<% print (i) %>">grade</i>
+                <% } %>
+            </a>
+        </div>
+    </div>
 </script>

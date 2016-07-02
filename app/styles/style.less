@@ -16,6 +16,11 @@ html {
   left: 0;
   z-index: 100;
 }
+
+nav .nav-wrapper form, nav .nav-wrapper form .input-field{
+  height: 100%;
+}
+
 .az-clear {
   clear: both;
   width: 100%;
@@ -71,11 +76,11 @@ div[role="banner"] {
 }
 
 #body {
-
+  min-height: 500px;
 }
 
 footer[role="contentinfo"] {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
   .az-footer-info {
@@ -87,7 +92,18 @@ footer[role="contentinfo"] {
     text-align: right;
   }
 }
+.az-icon {
+  margin-right: 10px;
+}
 
+.collection {
+  p {
+    margin-top: 5px !important;
+    i:first-line {
+      margin-bottom: 5px;
+    }
+  }
+}
 .az-gradient-background {
   background: radial-gradient(circle, @lightenColor, @darenColor);
 }

@@ -40,7 +40,7 @@ class RepositoryView extends Backbone.View {
     }
 
     render() {
-        var html = this.template(this.model.attributes);
+        var html = this.template(this.model);
         this.$el.append(html);
 
 
