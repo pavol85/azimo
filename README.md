@@ -1,6 +1,6 @@
 # Getting Started
 
-# Step 1: Setup
+# Setup
 
 1. Clone repository
 ```bash
