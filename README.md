@@ -18,6 +18,11 @@ Install node.js
 sudo apt-get install node
 ```
 
+Install node monules
+```bash
+npm install
+```
+
 Install WebPack globally
 ```bash
 npm install -g webpack
