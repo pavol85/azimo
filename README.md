@@ -18,7 +18,7 @@ Install node.js
 sudo apt-get install node
 ```
 
-Install node monules
+Install node modules
 ```bash
 npm install
 ```
