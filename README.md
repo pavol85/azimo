@@ -2,28 +2,28 @@
 
 # Setup
 
-1. Clone repository
+Clone repository
 ```bash
 git clone https://github.com/pavol85/azimo.git
 ```
 
-2. Open directory
+Open directory
 
 ```bash
 cd aziomo
 ```
 
-3. Install node.js
+Install node.js
 ```bash
 sudo apt-get install node
 ```
 
-4. Install WebPack globally
+Install WebPack globally
 ```bash
 npm install -g webpack
 ```
 
-5. Install project
+Install project
 * In project root directory `/azimo`
 ```bash
 webpack
