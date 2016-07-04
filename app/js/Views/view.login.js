@@ -42,10 +42,8 @@ class LoginView extends Backbone.View {
 
         if (key == enterKey && this.validateParams()) {
             e.preventDefault();
-        } else if (key == enterKey) {
-            e.preventDefault();
             this.getAuthenticate();
-
+            
             return false;
         }
     }
@@ -69,7 +67,7 @@ class LoginView extends Backbone.View {
             headers: {
                 "Authorization": "Basic " + btoa(this.model.get('username') + ":" + this.model.get('pass'))
             },
-            success: function (response) {
+            success: (response) => {
                 var session = new Session();
 
                 if ($('#az-remember-session').is(':checked')) {
@@ -78,11 +76,18 @@ class LoginView extends Backbone.View {
                     session.setSessionStorage(response);
                 }
 
-                $('.az-must-hidden').fadeOut();
-                var userModel = new UserModel(response);
-                var userView = new UserView(userModel);
+                this.onSuccess(response);
+            },
+            error: (e) => {
+                this.getNotification(e.responseJSON.message);
             }
         });
+    }
+
+    onSuccess(response) {
+        $('.az-must-hidden').fadeOut();
+        var userModel = new UserModel(response);
+        var userView = new UserView(userModel);
     }
 
     getNotification(message) {

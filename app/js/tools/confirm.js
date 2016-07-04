@@ -16,13 +16,9 @@ class Confirm {
     }
 
     showConfirmationWindow() {
-        return this.showWindow(this.template());
-    };
-
-    showWindow(temp) {
         var dfd = new $.Deferred();
         var result = false;
-        let template = temp.find('.modal');
+        let template = this.template().find('.modal');
         let confirmYes = template.find('a.confirm_yes');
         let confirmNo = template.find('a.confirm_no');
 
@@ -36,9 +32,12 @@ class Confirm {
         confirmYes.click(() => {
             result = true;
             template.hide();
+            dfd.resolve(true);
+
         });
         confirmNo.click(() => {
             template.hide();
+
         });
 
         return dfd.promise();

@@ -24,7 +24,7 @@ class Application {
 
         $('body').on('keypress', '#search', (e) => {
             if (e.which == 13) {
-                this.searchee(e.currentTarget.value);
+                this.search(e.currentTarget.value);
 
                 return false;
             }
@@ -32,11 +32,14 @@ class Application {
     }
 
 
-    searchee(query) {
+    search(query) {
         var s = new RepositoriesCollections();
         s.url = 'https://api.github.com/search/repositories?q=' + query;
         s.fetch({
-            success: (collection, response, options) => this.createRepositories(collection)
+            success: (collection, response, options) => this.createRepositories(collection),
+            error: (e) => {
+                console.log(e);
+            }
         });
     }
 
@@ -45,8 +48,6 @@ class Application {
     }
 
     createRepositories(collection) {
-        // var result = collection.models;
-        // console.log("createRepositories", collection, result);
         var repositoriesView = new RepositoriesView({collection: collection});
     }
 }

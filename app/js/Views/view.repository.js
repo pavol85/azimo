@@ -25,12 +25,16 @@ class RepositoryView extends Backbone.View {
     }
 
     selectIcon() {
-        const message = 'Are you sure assessment?';
-        var confirm = new Confirm();
-        confirm.showConfirmationWindow(message).then((confirmed) => {
-            console.log(arguments);
+        let confirm = new Confirm({
+            title: 'Change assessment',
+            message: 'Are you sure?',
+            yesBtn: 'Yes',
+            noBtn: 'No'
+        });
+
+        $.when(confirm.showConfirmationWindow()).then((confirmed) => {
             if (confirmed) {
-                console.info('Change assessment')
+                console.log('change assessment');
             }
         });
     }

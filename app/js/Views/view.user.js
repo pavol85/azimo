@@ -5,6 +5,7 @@ import template from "./../../templates/user.template.html";
 import templateMessage from "./../../templates/user.message.confirm.template.html";
 import UserModel from "./../Models/model.user";
 import Confirm from "./../tools/confirm";
+import Session from "./../tools/Session";
 
 class UserView extends Backbone.View {
 
@@ -57,7 +58,14 @@ class UserView extends Backbone.View {
             noBtn: 'Cancel'
         });
 
-        confirm.showConfirmationWindow();
+        $.when(confirm.showConfirmationWindow()).then((confirmed) => {
+            if (confirmed) {
+                let session = new Session();
+
+                session.removeSession();
+                window.location.reload();
+            }
+        });
     }
 
     getNotification(message) {
